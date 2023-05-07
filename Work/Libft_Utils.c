@@ -6,7 +6,7 @@
 /*   By: ababdelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 12:23:56 by ababdelo          #+#    #+#             */
-/*   Updated: 2023/05/07 13:45:44 by ababdelo         ###   ########.fr       */
+/*   Updated: 2023/05/07 20:25:35 by ababdelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ size_t	ft_strlen(const char *str)
 
 	index = 0;
 	while (str[index])
-		index++;	
+		index++;
 	return (index);
 }
 
 int	ft_strcmp(char *str, char *ref)
 {
-	int	index = 0;
-	
+	int	index;
+
 	index = 0;
 	while (str[index] != '\0' || ref[index] != '\0')
 	{
@@ -34,14 +34,6 @@ int	ft_strcmp(char *str, char *ref)
 		index++;
 	}
 	return (0);
-}
-
-void	check_nbr_range(t_data *data, unsigned int nbr, int sgn)
-{
-	if (nbr > INT_MAX && sgn == 1)
-		data->err = "INT_MAX";
-	else if (nbr > 2147483648 && sgn == -1)
-		data->err = "INT_MIN";
 }
 
 int	wrd_cnt(char const *s, char del)
@@ -67,12 +59,11 @@ int	wrd_cnt(char const *s, char del)
 
 int	ft_atoi(t_data *data, char *str)
 {
-	int				sgn;
-	unsigned int	result;
-	int				index;
+	int	sgn;
+	int	index;
+	int	result;
 
 	index = 0;
-	result = 0;
 	sgn = 1;
 	while (str[index] == 32 || (str[index] >= 9 && str[index] <= 13))
 		index++;
@@ -82,6 +73,15 @@ int	ft_atoi(t_data *data, char *str)
 			sgn = -sgn;
 		index++;
 	}
+	result = complete_atoi(data, str, index, sgn);
+	return (result);
+}
+
+int	complete_atoi(t_data *data, char *str, int index, int sgn)
+{
+	unsigned int	result;
+
+	result = 0;
 	while (str[index])
 	{
 		if (str[index] >= '0' && str[index] <= '9')
@@ -89,7 +89,7 @@ int	ft_atoi(t_data *data, char *str)
 		else
 		{
 			data->err = "NAN";
-			break;
+			break ;
 		}
 		index++;
 	}

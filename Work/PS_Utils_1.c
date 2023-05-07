@@ -6,7 +6,7 @@
 /*   By: ababdelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:31:17 by ababdelo          #+#    #+#             */
-/*   Updated: 2023/05/07 13:49:19 by ababdelo         ###   ########.fr       */
+/*   Updated: 2023/05/07 20:29:35 by ababdelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ void	initialize_prog(t_data *data, char **argv, int ac)
 	initialize_struct(data, argv);
 	check_args(data);
 	fill_list(data, ac);
-	GetErrorRef(data);
+	get_error_ref(data);
 }
 
 void	which_oper(t_data *data, int argc, int cntr)
 {
 	if (argc == 3 || cntr == 2)
 		sort_2nbr(data);
-	else if (argc == 4 ||  cntr == 3)
+	else if (argc == 4 || cntr == 3)
 		sort_3nbr(data, data->stack_a);
-	else if ((argc > 4 && argc <= 6) ||  (cntr > 3 && cntr <= 5))
+	else if ((argc > 4 && argc <= 6) || (cntr > 3 && cntr <= 5))
 		sort_5nbr(data);
 	else
 		sort_largenbr(data);

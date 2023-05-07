@@ -6,7 +6,7 @@
 /*   By: ababdelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 15:33:22 by ababdelo          #+#    #+#             */
-/*   Updated: 2023/05/07 13:51:21 by ababdelo         ###   ########.fr       */
+/*   Updated: 2023/05/07 20:29:35 by ababdelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	print_msg(char *str)
 	exit(1);
 }
 
-void	initialize_struct(t_data *data, char ** av)
+void	initialize_struct(t_data *data, char **av)
 {
 	data->stack_a = NULL;
 	data->stack_b = NULL;
@@ -60,14 +60,14 @@ void	fill_list(t_data *data, int ac)
 		data->err = "DUP";
 }
 
-void	GetErrorRef(t_data *data)
+void	get_error_ref(t_data *data)
 {
 	if (ft_strcmp(data->err, "NAN") == 0)
 		print_msg("Error ' Found a !Digit Number '\n");
-	else if (ft_strcmp(data->err, "DUP") == 0 )
+	else if (ft_strcmp(data->err, "DUP") == 0)
 		print_msg("Error ' Found Duplicated Numbers '\n");
 	else if (ft_strcmp(data->err, "INT_MAX") == 0)
-		print_msg("Error ' Number Size is Out of Range  (Nbr >> INT_MAX) '\n");	
+		print_msg("Error ' Number Size is Out of Range (Nbr >> INT_MAX) '\n");
 	else if (ft_strcmp(data->err, "INT_MIN") == 0)
-		print_msg("Error ' Number Size is Out of Range  (Nbr >> INT_MIN) '\n");
+		print_msg("Error ' Number Size is Out of Range (Nbr >> INT_MIN) '\n");
 }

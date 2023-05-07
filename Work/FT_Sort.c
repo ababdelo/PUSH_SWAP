@@ -6,7 +6,7 @@
 /*   By: ababdelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 15:58:11 by ababdelo          #+#    #+#             */
-/*   Updated: 2023/05/07 13:59:51 by ababdelo         ###   ########.fr       */
+/*   Updated: 2023/05/07 18:09:39 by ababdelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	sort_2nbr(t_data *data)
 
 void	sort_3nbr(t_data *data, t_node *head)
 {
-	if (head->value > head->next->value && head->value > head->next->next->value)
+	if (head->value > head->next->value
+		&& head->value > head->next->next->value)
 	{
 		if (head->next->value > head->next->next->value)
 		{
@@ -32,7 +33,8 @@ void	sort_3nbr(t_data *data, t_node *head)
 		else if (head->next->value < head->next->next->value)
 			ra(data);
 	}
-	else if (head->value < head->next->value && head->next->value > head->next->next->value)
+	else if (head->value < head->next->value
+		&& head->next->value > head->next->next->value)
 	{
 		if (head->value > head->next->next->value)
 			rra(data, 1);
@@ -54,15 +56,15 @@ void	sort_5nbr(t_data *data)
 	index = -1;
 	cntr = countlst(data->stack_a);
 	if (cntr == 5)
-		push_bgval(Get_bg_lstval(data->stack_a), data);
-	push_bgval(Get_bg_lstval(data->stack_a), data);
+		push_bgval(getbglsval(data->stack_a), data);
+	push_bgval(getbglsval(data->stack_a), data);
 	sort_3nbr(data, data->stack_a);
 	while (++index < 2)
 	{
 		pa(data);
 		ra(data);
 		if (cntr == 4)
-			break;
+			break ;
 	}
 }
 
@@ -73,11 +75,11 @@ void	sort_largenbr(t_data *data)
 	while (1)
 	{
 		update_cntrlvar(data);
-		if(data->size == 0)
+		if (data->size == 0)
 		{
 			while (data->slst != NULL)
 				delete_lst(&data->slst, data->slst);
-			break;
+			break ;
 		}
 		approach2sort(data, data->head);
 	}

@@ -6,7 +6,7 @@
 /*   By: ababdelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 15:41:32 by ababdelo          #+#    #+#             */
-/*   Updated: 2023/05/07 14:00:43 by ababdelo         ###   ########.fr       */
+/*   Updated: 2023/05/07 20:37:20 by ababdelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,21 @@ t_node	*sort_lst(t_data *data)
 {
 	t_node	*i;
 	t_node	*lst;
-	
+
 	lst = malloc(sizeof(t_node));
 	i = data->stack_a;
 	lst->value = i->value;
-	lst->next = NULL; 
+	lst->next = NULL;
 	if (!lst)
-		return NULL;
+		return (NULL);
 	i = data->stack_a->next;
 	while (i != NULL)
 	{
-		lst_add_back(lst,i->value);
+		lst_add_back(lst, i->value);
 		i = i->next;
 	}
 	complete_sort_task(get_lst_targ(lst, 1));
-	return(lst);
+	return (lst);
 }
 
 void	complete_sort_task(t_node *i)
@@ -55,78 +55,76 @@ void	complete_sort_task(t_node *i)
 	}
 }
 
-int	which_closer2range(t_data *data, int targ)
+int	which_closer2range(t_data *data, int targ, int size)
 {
-	int		size;
 	int		r_closer_pos;
 	int		l_closer_pos;
 	int		right;
 	int		left;
 	t_node	*head;
 
-	size = countlst(data->stack_a);
-	r_closer_pos =size;
+	r_closer_pos = size;
 	l_closer_pos = size;
 	head = data->stack_a;
-	while(head != NULL)
+	while (head != NULL)
 	{
 		if (is_member(data, head->value, 0))
 		{
 			right = count_tilltarget(data->stack_a, targ);
-			left = size -  right;
+			left = size - right;
 			if (right < r_closer_pos)
 				r_closer_pos = right;
-			if( left < l_closer_pos)
+			if (left < l_closer_pos)
 				l_closer_pos = left;
 		}
 		head = head->next;
 	}
-	if(r_closer_pos < l_closer_pos)
-		return(1);
-	return(0);
+	if (r_closer_pos < l_closer_pos)
+		return (1);
+	return (0);
 }
 
-
-int	which_closer2targ(t_data *data, int targ_pos)
+int	which_closer2targ(int targ_pos, int size)
 {
-	int		size;
 	int		r_closer_pos;
 	int		l_closer_pos;
 	int		right;
 	int		left;
 
-	size = countlst(data->stack_b);
-	r_closer_pos =size;
+	r_closer_pos = size;
 	l_closer_pos = size;
 	right = targ_pos;
-	left = size -  right;
+	left = size - right;
 	if (right < r_closer_pos)
 		r_closer_pos = right;
-	if( left < l_closer_pos)
+	if (left < l_closer_pos)
 		l_closer_pos = left;
-	if(r_closer_pos < l_closer_pos)
-		return(1);
-	return(0);
+	if (r_closer_pos < l_closer_pos)
+		return (1);
+	return (0);
 }
 
 void	complete_sort_largenbr(t_data *data)
 {
 	t_node	*targ;
 	int		index;
+	int		size;
 
 	index = -1;
 	data->size = 1;
 	while (data->size)
 	{
+		size = countlst(data->stack_b);
 		data->size = countlst(data->stack_b);
-		targ = Get_bg_lstval(data->stack_b);
-		if(targ != NULL)
+		targ = getbglsval(data->stack_b);
+		if (targ != NULL)
 		{
 			if (targ->value == data->stack_b->value)
 				pa(data);
 			else
 			{
-				if (which_closer2targ(data, (countlst(data->stack_b) - countlst(targ))))
+				if (which_closer2targ(
+						(countlst(data->stack_b) - countlst(targ)), size))
 					rb(data);
 				else
 					rrb(data, 1);

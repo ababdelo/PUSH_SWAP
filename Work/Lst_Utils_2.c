@@ -6,7 +6,7 @@
 /*   By: ababdelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 11:28:14 by ababdelo          #+#    #+#             */
-/*   Updated: 2023/05/07 13:49:05 by ababdelo         ###   ########.fr       */
+/*   Updated: 2023/05/07 18:09:39 by ababdelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	delete_lst(t_node **lst, t_node *target)
 {
 	t_node	*ptr;
 	t_node	*backup;
-	
+
 	ptr = *lst;
 	while (ptr != NULL && target != NULL)
 	{
@@ -25,19 +25,19 @@ void	delete_lst(t_node **lst, t_node *target)
 			backup = ptr->next->next;
 			free(target);
 			ptr->next = backup;
-			break;
+			break ;
 		}
 		else if (ptr == target)
 		{
 			*lst = ptr->next;
 			free(target);
-			break;
+			break ;
 		}
 		ptr = ptr->next;
 	}
 }
 
-t_node	*Get_bg_lstval(t_node *head)
+t_node	*getbglsval(t_node *head)
 {
 	t_node	*ref;
 
@@ -51,7 +51,7 @@ t_node	*Get_bg_lstval(t_node *head)
 	return (ref);
 }
 
-t_node	*Get_sml_lstval(t_node *head)
+t_node	*getsmllstval(t_node *head)
 {
 	t_node	*ref;
 
@@ -65,7 +65,7 @@ t_node	*Get_sml_lstval(t_node *head)
 	return (ref);
 }
 
-t_node	*get_lst_midpos(t_node *head)
+t_node	*getlstmidpos(t_node *head)
 {
 	int	index;
 	int	mid;

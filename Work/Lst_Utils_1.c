@@ -6,7 +6,7 @@
 /*   By: ababdelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 11:21:58 by ababdelo          #+#    #+#             */
-/*   Updated: 2023/05/07 13:47:53 by ababdelo         ###   ########.fr       */
+/*   Updated: 2023/05/07 16:16:13 by ababdelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,18 @@
 
 t_node	*ft_getend(t_node *lst)
 {
-	t_node	*head = lst;
+	t_node	*head;
 
-	while(head->next != NULL)
+	head = lst;
+	while (head->next != NULL)
 		head = head->next;
-	return(head);
+	return (head);
 }
 
 void	lst_add_front(t_node **lst, int data)
 {
 	t_node	*head;
-	
+
 	head = malloc(sizeof(t_node));
 	head->value = data;
 	head->next = *lst;
@@ -34,11 +35,11 @@ void	lst_add_front(t_node **lst, int data)
 int	countlst(t_node *lst)
 {
 	t_node	*head;
-	int 	count;
+	int		count;
 
 	count = 0;
 	head = lst;
-	while(head != NULL)
+	while (head != NULL)
 	{
 		head = head->next;
 		count++;
@@ -55,24 +56,24 @@ t_node	*get_lst_targ(t_node *lst, int targ)
 	head = lst;
 	cntr = countlst(head);
 	index = 0;
-	while(index < cntr && head != NULL)
+	while (index < cntr && head != NULL)
 	{
 		index++;
-		if(index == targ)
-			break;
+		if (index == targ)
+			break ;
 		head = head->next;
 	}
-	return(head);
+	return (head);
 }
 
-void lst_add_back(t_node *stack_a,int data)
+void	lst_add_back(t_node *stacka, int data)
 {
-	t_node	*stack_a1;
+	t_node	*stackc;
 	t_node	*ptr;
 
-	stack_a1 = malloc(sizeof(struct s_node) * 1);
-	stack_a1->value = data;
-	stack_a1->next = NULL;
-	ptr = ft_getend(stack_a);
-	ptr->next = stack_a1;
+	stackc = malloc(sizeof(struct s_node) * 1);
+	stackc->value = data;
+	stackc->next = NULL;
+	ptr = ft_getend(stacka);
+	ptr->next = stackc;
 }

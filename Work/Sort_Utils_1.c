@@ -6,7 +6,7 @@
 /*   By: ababdelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 15:27:35 by ababdelo          #+#    #+#             */
-/*   Updated: 2023/05/07 14:00:24 by ababdelo         ###   ########.fr       */
+/*   Updated: 2023/05/07 20:35:26 by ababdelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	update_cntrlvar(t_data *data)
 		mgcnbr = 8;
 	else if (data->size >= 150 && data->size <= 250)
 		mgcnbr = 14;
-	else if (data->size > 250 && data->size<= 450)
+	else if (data->size > 250 && data->size <= 450)
 		mgcnbr = 20;
 	else if (data->size > 450)
 		mgcnbr = 24;
@@ -94,16 +94,19 @@ void	update_cntrlvar(t_data *data)
 
 void	approach2sort(t_data *data, t_node *head_a)
 {
+	int	size;
+
+	size = countlst(data->stack_a);
 	if (is_member(data, head_a->value, 1) || data->size <= 3)
 	{
 		pb(data);
-		if (data->stack_b->value < get_lst_midpos(data->stack_b)->value)
+		if (data->stack_b->value < getlstmidpos(data->stack_b)->value)
 			rb(data);
 		head_a = data->stack_a;
 	}
 	else
 	{
-		if (which_closer2range(data, head_a->value))
+		if (which_closer2range(data, head_a->value, size))
 			ra(data);
 		else
 			rra(data, 1);

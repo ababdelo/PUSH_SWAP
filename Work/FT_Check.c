@@ -6,7 +6,7 @@
 /*   By: ababdelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 13:05:10 by ababdelo          #+#    #+#             */
-/*   Updated: 2023/05/07 13:44:24 by ababdelo         ###   ########.fr       */
+/*   Updated: 2023/05/07 18:36:54 by ababdelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,14 @@ void	check_args(t_data *data)
 	}
 }
 
+void	check_nbr_range(t_data *data, unsigned int nbr, int sgn)
+{
+	if (nbr > INT_MAX && sgn == 1)
+		data->err = "INT_MAX";
+	else if (nbr > 2147483648 && sgn == -1)
+		data->err = "INT_MIN";
+}
+
 int	check_repetition(t_data *data)
 {
 	t_node	*head;
@@ -47,7 +55,7 @@ int	check_repetition(t_data *data)
 		head2 = data->stack_a;
 		while (head2 != NULL)
 		{
-			if(head->value == head2->value)
+			if (head->value == head2->value)
 				cntr++;
 			head2 = head2->next;
 		}
