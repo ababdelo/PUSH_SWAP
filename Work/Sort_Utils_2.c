@@ -107,10 +107,8 @@ int	which_closer2targ(int targ_pos, int size)
 void	complete_sort_largenbr(t_data *data)
 {
 	t_node	*targ;
-	int		index;
 	int		size;
 
-	index = -1;
 	data->size = 1;
 	while (data->size)
 	{
