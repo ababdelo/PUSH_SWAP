@@ -12,15 +12,6 @@
 
 #include "PUSH_SWAP.h"
 
-// void print_list(t_node *lst, char c)
-// {
-// 	while (lst != NULL)
-// 	{
-// 		printf("stack_%c[%p] : %d\n",c,lst, lst->value);
-// 		lst = lst->next;
-// 	}
-// }
-
 void	print_msg(char *str)
 {
 	write(2, str, ft_strlen(str));
