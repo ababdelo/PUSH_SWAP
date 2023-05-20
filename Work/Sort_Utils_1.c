@@ -6,7 +6,7 @@
 /*   By: ababdelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 15:27:35 by ababdelo          #+#    #+#             */
-/*   Updated: 2023/05/07 20:35:26 by ababdelo         ###   ########.fr       */
+/*   Updated: 2023/05/20 13:23:13 by ababdelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,14 @@ void	update_cntrlvar(t_data *data)
 	mgcnbr = 4;
 	data->head = data->stack_a;
 	data->size = countlst(data->head);
-	if (data->size >= 50 && data->size <= 150)
+	if (data->size > 50 && data->size <= 150)
 		mgcnbr = 8;
-	else if (data->size >= 150 && data->size <= 250)
-		mgcnbr = 14;
+	else if (data->size > 150 && data->size <= 250)
+		mgcnbr = 16;
 	else if (data->size > 250 && data->size <= 450)
-		mgcnbr = 20;
-	else if (data->size > 450)
 		mgcnbr = 24;
+	else if (data->size > 450)
+		mgcnbr = 32;
 	data->mid = data->size / 2;
 	data->offset = data->size / mgcnbr;
 	data->start = data->mid - data->offset;
