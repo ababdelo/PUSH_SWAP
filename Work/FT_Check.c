@@ -6,11 +6,23 @@
 /*   By: ababdelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 13:05:10 by ababdelo          #+#    #+#             */
-/*   Updated: 2023/05/07 18:36:54 by ababdelo         ###   ########.fr       */
+/*   Updated: 2023/05/23 14:31:34 by ababdelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PUSH_SWAP.h"
+
+void	fst_check(t_data *data, char *argv)
+{
+	check_args(data);
+	if (ft_strcmp(data->err, "NAN") == 0)
+		print_msg("Error ' Found a !Digit Number '\n");
+	ft_atoi(data, argv);
+	if (ft_strcmp(data->err, "INT_MAX") == 0)
+		print_msg("Error ' Number Size is Out of Range (Nbr >> INT_MAX) '\n");
+	else if (ft_strcmp(data->err, "INT_MIN") == 0)
+		print_msg("Error ' Number Size is Out of Range (Nbr >> INT_MIN) '\n");
+}
 
 void	check_args(t_data *data)
 {

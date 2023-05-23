@@ -6,7 +6,7 @@
 /*   By: ababdelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 11:12:12 by ababdelo          #+#    #+#             */
-/*   Updated: 2023/05/07 20:34:24 by ababdelo         ###   ########.fr       */
+/*   Updated: 2023/05/23 14:30:34 by ababdelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	check_args(t_data *data);
 void	get_error_ref(t_data *data);
 void	push_bgval(t_node *head, t_data *data);
 void	check_nbr_range(t_data *data, unsigned int nbr, int sgn);
+void	fst_check(t_data *data, char *argv);
 
 t_node	*sort_lst(t_data *data);
 void	complete_sort_task(t_node *i);
