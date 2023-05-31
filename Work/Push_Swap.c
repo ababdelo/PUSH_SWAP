@@ -6,7 +6,7 @@
 /*   By: ababdelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 13:08:21 by ababdelo          #+#    #+#             */
-/*   Updated: 2023/05/23 14:31:14 by ababdelo         ###   ########.fr       */
+/*   Updated: 2023/05/31 11:58:02 by ababdelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	main(int argc, char **argv)
 	int		cntr;
 
 	ac = 1;
+	if (argc == 1)
+		return (0);
 	initialize_prog(&data, argv, ac);
 	if (argc < 3)
 	{
